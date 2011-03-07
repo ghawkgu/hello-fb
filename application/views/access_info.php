@@ -46,17 +46,17 @@ code {
 <body>
 
 <h1>Request data</h1>
-<h2>Post data</h2>
+<h2>Signed request data</h2>
 
 <table summary="post data">
     <thead>
-        <tr><th>name</th><th>value</th></tr>
+        <tr><th>key</th><th>value</th></tr>
     </thead>
     <tbody>
     <?php
-        foreach($_POST as $name => $value) { 
+        foreach($signed_request as $key => $value) { 
     ?>
-        <tr><td><?= $name?></td><td><?= $value?></td></tr>
+        <tr><td><?= $key?></td><td><?= $value?></td></tr>
     <?php
         }
      ?>
