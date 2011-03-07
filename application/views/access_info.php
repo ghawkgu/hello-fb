@@ -44,7 +44,7 @@ code {
 </style>
 </head>
 <body>
-
+<div id="fb-root"></div>
 <h1>Request data</h1>
 <h2>Signed request data</h2>
 
@@ -54,6 +54,18 @@ code {
 
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
-
+<script>
+  signedRequest = <?= $signed_request?>;
+  window.fbAsyncInit = function() {
+    FB.init({appId: '<?= $appinfo['id']?>', status: true, cookie: true,
+             xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/'+ signedRequest.user.locale +'/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
 </body>
 </html>
