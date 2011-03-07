@@ -48,20 +48,9 @@ code {
 <h1>Request data</h1>
 <h2>Signed request data</h2>
 
-<table summary="post data">
-    <thead>
-        <tr><th>key</th><th>value</th></tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach($signed_request as $key => $value) { 
-    ?>
-        <tr><td><?= $key?></td><td><?= $value?></td></tr>
-    <?php
-        }
-     ?>
-    </tbody>
-</table>
+<pre>
+<?= $signed_request?>
+</pre>
 
 
 <p><br />Page rendered in {elapsed_time} seconds</p>

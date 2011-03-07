@@ -9,8 +9,9 @@ class access_info extends CI_Controller {
 
 	function index()
 	{
-	    $encodedData = $this->input->post('signed_request');
-	    $data['signed_request'] = json_decode(base64_decode($encodedData));
+	    $signedReq = $this->input->post('signed_request');
+	    $encodedData = explode('.', $signedReq);
+	    $data['signed_request'] = base64_decode($encodedData[1]);
 	    
 		$this->load->view('access_info.php', $data);
 	}
