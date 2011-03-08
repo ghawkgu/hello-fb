@@ -53,7 +53,7 @@ code {
 <?php var_dump($user_info)?>
 </pre>
 
-<p><a href="http://www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=http://apps.facebook.com/ghk_pages/&response_type=token&display=page" >Click here to test the OAuth</a></p>
+<p><a href="javascript:void(0)" onclick="doAuth();" >Click here to test the OAuth</a></p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
@@ -69,6 +69,10 @@ code {
       '//connect.facebook.net/' + 'en_US' +'/all.js';
     document.getElementById('fb-root').appendChild(e);
   }());
+
+  function doAuth() {
+      top.location.href = document.location.protocol + '//www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=' + document.location.protocol + '://apps.facebook.com/ghk_pages/&response_type=token&display=page';
+  }
 </script>
 </body>
 </html>
