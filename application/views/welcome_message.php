@@ -58,7 +58,9 @@ code {
 <p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 
 
+<p><br />URI_STRING: <?=uri_string()?>, QUERY_STRING: <?=$_SERVER['QUERY_STRING']?></p>
 <p><br />Page rendered in {elapsed_time} seconds</p>
+
 
 </body>
 </html>
