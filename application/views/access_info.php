@@ -71,7 +71,7 @@ code {
   }());
 
   function doAuth() {
-      top.location.href = document.location.protocol + '//www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=' + document.location.protocol + '://apps.facebook.com/ghk_pages/&response_type=token&display=page';
+      top.location.href = document.location.protocol + '//www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=' + document.location.protocol + '//apps.facebook.com/ghk_pages/&response_type=token&display=page';
   }
 </script>
 </body>
