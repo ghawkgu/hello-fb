@@ -16,11 +16,12 @@ class access_info extends CI_Controller {
 	    $encodedData = explode('.', $signedReq);
 	    
 	    $data['signed_request'] = count($encodedData) > 1 ? base64_decode($encodedData[1]) : '{}';
+	    $data['user_info'] = null;
 	    
-	    $uri = uri_string();
-	    $fragment = explode('#', $uri);
-	    if(count($fragment) > 1) {
-	        $this->fetchDetail($fragment[1]);
+	    $accessInfo = json_decode($data['signed_request'], true);
+	    if (isset($accessInfo['access_token']) && isset($accessInfo['user'])) {
+	        $userInfo = file('https://graph.facebook.com/' . $accessInfo['user']['user_id'] . "?access_token=" . $accessInfo['access_token']);
+	        $data['user_info'] = $userInfo;
 	    }
 	    
 		$this->load->view('access_info.php', $data);

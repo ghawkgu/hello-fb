@@ -49,6 +49,9 @@ code {
 <pre>
 <?= $signed_request?>
 </pre>
+<pre>
+<?php var_dump($user_info)?>
+</pre>
 
 <p><a href="http://www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=http://apps.facebook.com/ghk_pages/&response_type=token&display=page" >Click here to test the OAuth</a></p>
 
