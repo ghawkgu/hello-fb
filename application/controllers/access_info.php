@@ -7,7 +7,7 @@ class access_info extends CI_Controller {
 		parent::__construct();
 	}
 
-	function index()
+	function index($tab=null)
 	{
 	    $appinfo = $this->config->item('appinfo');
 	    $data['appinfo'] = $appinfo;
