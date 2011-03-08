@@ -19,8 +19,8 @@ class access_info extends CI_Controller {
 	    $data['user_info'] = null;
 	    
 	    $accessInfo = json_decode($data['signed_request'], true);
-	    if (isset($accessInfo['access_token']) && isset($accessInfo['user'])) {
-	        $userInfo = file('https://graph.facebook.com/' . $accessInfo['user']['user_id'] . "?access_token=" . $accessInfo['access_token']);
+	    if (isset($accessInfo['oauth_token']) && isset($accessInfo['user_id'])) {
+	        $userInfo = file('https://graph.facebook.com/' . $accessInfo['user_id'] . "?access_token=" . $accessInfo['oauth_token']);
 	        $data['user_info'] = $userInfo;
 	    }
 	    
