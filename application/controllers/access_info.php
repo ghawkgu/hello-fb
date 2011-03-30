@@ -23,8 +23,11 @@ class access_info extends CI_Controller {
 	        $userInfo = file('https://graph.facebook.com/' . $accessInfo['user_id'] . "?access_token=" . $accessInfo['oauth_token']);
 	        $data['user_info'] = $userInfo;
 	    }
+
+            $this->load->library('fbsdk');
+	    $data['sr'] = $this->fbsdk->getSignedRequest();
 	    
-		$this->load->view('access_info.php', $data);
+	    $this->load->view('access_info.php', $data);
 	}
 	
 	protected function fetchDetail($accessInfo) {
