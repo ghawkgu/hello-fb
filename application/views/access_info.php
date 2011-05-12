@@ -40,6 +40,7 @@ code {
 	padding: 12px 10px 12px 10px;
 }
 </style>
+<link rel="stylesheet" href="<?= site_url("static/picnik/picnikbox_2_0.css") ?>" media="screen" type="text/css" />
 </head>
 <body>
 <div id="fb-root"></div>
@@ -58,9 +59,11 @@ code {
 </pre>
 
 <p><a href="javascript:void(0)" onclick="doAuth();" >Click here to test the OAuth</a></p>
+<p><a href="http://www.picnik.com/service/?_api_key=22f6c61c0b65a18c0fd53998f5ba5497&_close_target=<?= site_url("static/picnik/picnikbox_close_2_0.html") ?>" class="pbox" >Test PBOX</a></p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
+<script type="text/javascript" src="<?= site_url("static/picnik/picnikbox_2_0.js") ?>"></script>
 <script>
   signedRequest = <?= $signed_request?>;
   window.fbAsyncInit = function() {
