@@ -40,7 +40,7 @@ code {
 	padding: 12px 10px 12px 10px;
 }
 </style>
-<link rel="stylesheet" href="<?= site_url("static/picnik/picnikbox_2_0.css") ?>" media="screen" type="text/css" />
+<link rel="stylesheet" href="<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_2_0.css")) ?>" media="screen" type="text/css" />
 </head>
 <body>
 <div id="fb-root"></div>
@@ -59,11 +59,13 @@ code {
 </pre>
 
 <p><a href="javascript:void(0)" onclick="doAuth();" >Click here to test the OAuth</a></p>
-<p><a href="http://www.picnik.com/service/?_api_key=22f6c61c0b65a18c0fd53998f5ba5497&_close_target=<?= site_url("static/picnik/picnikbox_close_2_0.html") ?>" class="pbox" >Test PBOX</a></p>
-
+<p><a href="http://www.picnik.com/service/?_apikey=22f6c61c0b65a18c0fd53998f5ba5497&_expand_button=false&_import=http%3A//www.picnik.com/graphics/api/api_sample_1.jpg&_exclude=in&_close_target=<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_close_2_0.html")) ?>" class="pbox" >Test PBOX</a></p>
+<p><a href="javascript:void(0)" onclick="popUpPicnik();" >Pop up picnik window</a></p>
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
-<script type="text/javascript" src="<?= site_url("static/picnik/picnikbox_2_0.js") ?>"></script>
+<script type="text/javascript" src="<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_2_0.js")) ?>">
+PicnikBox.SetOverlayMargin(0);
+</script>
 <script>
   signedRequest = <?= $signed_request?>;
   window.fbAsyncInit = function() {
@@ -79,6 +81,9 @@ code {
 
   function doAuth() {
       top.location.href = document.location.protocol + '//www.facebook.com/dialog/oauth/?scope=email,user_birthday,user_about_me&client_id=<?= $appinfo['id']?>&redirect_uri=' + document.location.protocol + '//apps.facebook.com/ghk_pages/&response_type=token&display=page';
+  }
+  function popUpPicnik() {
+      window.open("<?= preg_replace("/index\.php\?/", "", site_url("picnik/popup")) ?>", "Editor", "status=0,toolbar=0,location=0,menubar=0,resizable=0,height=600,width=800");
   }
 </script>
 </body>
