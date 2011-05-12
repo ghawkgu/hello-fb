@@ -48,9 +48,13 @@ code {
 
 <pre>
 <?= $signed_request?>
+<?php var_dump($sr)?>
 </pre>
 <pre>
 <?php var_dump($user_info)?>
+</pre>
+<pre>
+<?php var_dump($raw_sr)?>
 </pre>
 
 <p><a href="javascript:void(0)" onclick="doAuth();" >Click here to test the OAuth</a></p>

@@ -14,7 +14,7 @@ class access_info extends CI_Controller {
 	    	    
 	    $signedReq = $this->input->post('signed_request');
 	    $encodedData = explode('.', $signedReq);
-	    
+	    $data['raw_sr'] = $signedReq; 
 	    $data['signed_request'] = count($encodedData) > 1 ? base64_decode($encodedData[1]) : '{}';
 	    $data['user_info'] = null;
 	    
@@ -24,8 +24,13 @@ class access_info extends CI_Controller {
 	        $data['user_info'] = $userInfo;
 	    }
 
-            $this->load->library('fbsdk');
-	    $data['sr'] = $this->fbsdk->getSignedRequest();
+	    $fbConfig = array(
+'appId' => '193882863975678',
+  'secret' => '027cb1b2133e2c1a612386b10a1974c3',
+		'cookie' => false,
+	    );
+            $this->load->library('facebook', $fbConfig);
+	    $data['sr'] = $this->facebook->getSignedRequest();
 	    
 	    $this->load->view('access_info.php', $data);
 	}
