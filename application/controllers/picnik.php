@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class access_info extends CI_Controller {
+class picnik extends CI_Controller {
 
 	function __construct()
 	{
@@ -11,6 +11,17 @@ class access_info extends CI_Controller {
         $this->load->view("picnik_popup");
     }
 	
+        function export() {
+            $data = array(
+		'file' => $this->input->get("file"),
+	    );
+            $this->load->view("picnik_close", $data);
+	}
+
+        function close() {
+            $this->load->view("picnik_close");
+	}
+	    
 	protected function fetchDetail($accessInfo) {
 	    
 	}

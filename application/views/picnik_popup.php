@@ -43,13 +43,23 @@ code {
 <link rel="stylesheet" href="<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_2_0.css")) ?>" media="screen" type="text/css" />
 </head>
 <body>
-<p><a id="testLink" href="http://www.picnik.com/service/?_apikey=22f6c61c0b65a18c0fd53998f5ba5497&_expand_button=false&_import=http%3A//www.picnik.com/graphics/api/api_sample_1.jpg&_exclude=in&_close_target=<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_close_2_0.html")) ?>" class="pbox" >Test PBOX</a></p>
+<p><a id="testLink" href="http://www.picnik.com/service/?_apikey=22f6c61c0b65a18c0fd53998f5ba5497&_expand_button=false&_import=http%3A//www.picnik.com/graphics/api/api_sample_1.jpg&_exclude=in&_close_target=<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_close_2_0.html")) ?>&_export=<?= preg_replace("/index\.php\?/", "", site_url("picnik/export")) ?>&_export_method=GET&_export_agent=browser" class="pbox" >Test PBOX</a></p>
 
 <script type="text/javascript" src="<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_2_0.js")) ?>">
 PicnikBox.SetOverlayMargin(0);
+function updateImage() {
+    if (!!fileurl) {
+        parent.updateImage(fileurl);
+    }
+}
 </script>
-<script type="text/javascript" >
-    document.getElementById("testLink").click();
+<?php /*
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js">
+    _jq = jQuery.noConflict(true);
+    _jq(function(){
+        _jq("#testLink").trigger("click");
+    });
 </script>
+*/ ?>
 </body>
 </html>
