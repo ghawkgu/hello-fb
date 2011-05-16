@@ -62,8 +62,38 @@ code {
 <p><a href="http://www.picnik.com/service/?_apikey=22f6c61c0b65a18c0fd53998f5ba5497&_expand_button=false&_import=http%3A//www.picnik.com/graphics/api/api_sample_1.jpg&_exclude=in&_close_target=<?= preg_replace("/index\.php\?/", "", site_url("static/picnik/picnikbox_close_2_0.html")) ?>&_export=<?= preg_replace("/index\.php\?/", "", site_url("picnik/export")) ?>" class="pbox" >Test PBOX</a></p>
 <p><img id="editedImage" /></p>
 <p><a href="javascript:void(0)" onclick="popUpPicnik();" >Pop up picnik window</a></p>
-<p><br />Page rendered in {elapsed_time} seconds</p>
 
+<img id="aviary_img" src="<?= preg_replace("/index\.php\?/", "", site_url("static/image/img_test.jpeg")) ?>" /> 
+<p><input type="image" src="http://www.aviary.com/images/feather/edit-photo.png" value="Edit photo" onclick="launchEditor('aviary'); return false;" /></p>
+
+<p><br />Page rendered in {elapsed_time} seconds</p>
+<script type="text/javascript">
+var _featherLoaded = false;
+
+Feather_APIKey = 'cf48c5f9490720d8b45b266fbf77a38b';
+Feather_Theme = 'bluesky';
+Feather_EditOptions = 'all';
+Feather_OpenType = 'float';
+Feather_CropSizes = '320x240,640x480,800x600,1280x1024';
+
+Feather_OnSave = function(id, url) {
+    var e = document.getElementById(id);
+    e.src = url;
+    aviaryeditor_close();
+}
+
+Feather_OnLoad = function() {
+    _featherLoaded = true;
+}
+
+function launchEditor(imageid) {
+    if (_featherLoaded) {
+        var src = document.getElementById(imageid).src;
+        aviaryeditor(imageid, src);
+    }
+}
+</script> 
+<script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js">
   jQuery.noConflict(true);
 </script>
